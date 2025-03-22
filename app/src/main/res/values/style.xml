@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="NotoRegular">
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="NotoRegular.heading1">
+        <item name="android:textSize">34sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="NotoRegular.heading2">
+        <item name="android:textSize">28sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="NotoRegular.heading3">
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="NotoRegular.title1">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="NotoRegular.title2">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="NotoRegular.title3">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="NotoRegular.body1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="NotoRegular.body2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="NotoRegular.body3">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="NotoRegular.body4">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="NotoRegular.body5">
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="NotoBold">
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="NotoBold.heading1">
+        <item name="android:textSize">34sp</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="NotoBold.heading2">
+        <item name="android:textSize">28sp</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="NotoBold.heading3">
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="NotoBold.title1">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="NotoBold.title2">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="NotoBold.title3">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="NotoBold.body1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="NotoBold.body2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="NotoBold.body3">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="NotoBold.body4">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="NotoBold.body5">
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
+    </style>
+</resources>
+
