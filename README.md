@@ -8,8 +8,6 @@ Key Features:
 
 -  Scan and list local media files (images, videos, audio).
 
--  Display media details (name, size, date modified).
-
 -  Full-screen image viewer with share, set as background, media details (name, size, date modified) feature.
 
 -  Efficient file search and filtering options.
