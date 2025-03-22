@@ -6,15 +6,15 @@ MediaKeep is an Android application designed to scan and manage local media file
 
 Key Features:
 
-Scan and list local media files (images, videos, audio).
+-  Scan and list local media files (images, videos, audio).
 
-Display media details (name, size, date modified).
+-  Display media details (name, size, date modified).
 
-Full-screen image viewer.
+-  Full-screen image viewer with share, set as background, media details (name, size, date modified) feature.
 
-Efficient file search and filtering options.
+-  Efficient file search and filtering options.
 
-Built with MVVM architecture for maintainability and scalability.
+-  Built with MVVM architecture for maintainability and scalability.
 
 Tech Stack:
 
