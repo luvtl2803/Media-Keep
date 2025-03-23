@@ -10,7 +10,7 @@ Key Features:
 
 -  Full-screen image viewer with share, set as background, media details (name, size, date modified) feature.
 
--  Efficient file search and filtering options.
+-  Efficient filter options.
 
 -  Built with MVVM architecture for maintainability and scalability.
 
