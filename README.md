@@ -21,3 +21,14 @@ Tech Stack:
 -  Architecture: MVVM
 
 -  Storage Handling: Scoped Storage API
+
+Preview:
+
+![image](https://github.com/user-attachments/assets/30748687-b8d9-49dd-b29b-1c7d20320c8e)
+
+![image](https://github.com/user-attachments/assets/84e36156-9023-44aa-badf-0e4e120a6ee0)
+
+![image](https://github.com/user-attachments/assets/e2797ff4-2e18-4726-8a48-704b17d124a1)
+
+
+
