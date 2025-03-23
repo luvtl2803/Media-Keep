@@ -5,9 +5,6 @@ import android.os.StatFs;
 import android.util.Log;
 
 public class StorageManager {
-    /**
-     * Tính phần trăm bộ nhớ đã dùng dựa trên internal storage (khớp với Settings)
-     */
     public static int getUsedStoragePercentage() {
         StatFs statFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
         long totalStorage = statFs.getBlockSizeLong() * statFs.getBlockCountLong();
@@ -16,16 +13,13 @@ public class StorageManager {
 
         int percentage = (int) (((double) usedStorage / totalStorage) * 100);
 
-        Log.d("StorageInfo", "Total: " + StorageUtils.convertBytes(totalStorage));
-        Log.d("StorageInfo", "Used: " + StorageUtils.convertBytes(usedStorage));
+        Log.d("StorageInfo", "Total: " + ConvertBytesToBigger.convertBytes(totalStorage));
+        Log.d("StorageInfo", "Used: " + ConvertBytesToBigger.convertBytes(usedStorage));
         Log.d("StorageInfo", "Percentage: " + percentage + "%");
 
         return percentage;
     }
 
-    /**
-     * Lấy dung lượng đã dùng (bytes)
-     */
     public static long getUsedStorage() {
         StatFs statFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
         long totalStorage = statFs.getBlockSizeLong() * statFs.getBlockCountLong();
@@ -33,17 +27,11 @@ public class StorageManager {
         return totalStorage - availableStorage;
     }
 
-    /**
-     * Lấy tổng dung lượng (bytes)
-     */
     public static long getTotalStorage() {
         StatFs statFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
         return statFs.getBlockSizeLong() * statFs.getBlockCountLong();
     }
 
-    /**
-     * Tính phần trăm bao gồm cả /system (không khuyến khích nếu muốn khớp Settings)
-     */
     public static int getTotalSystemUsedPercentage() {
         long totalStorage = 0;
         long usedStorage = 0;

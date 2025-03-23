@@ -5,5 +5,5 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.MediaKeep" parent="Base.Theme.MediaKeep" />
+    <style name="Theme.MediaKeep" parent="Theme.Material3.DayNight.NoActionBar" />
 </resources>

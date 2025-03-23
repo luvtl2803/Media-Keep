@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Media Keep</string>
+    <string name="play_video">Play video</string>
+
+    <string-array name="sort_options">
+        <item>Date (Newest)</item>
+        <item>Date (Oldest)</item>
+        <item>Size (Smallest)</item>
+        <item>Size (Largest)</item>
+    </string-array>
 </resources>

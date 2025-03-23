@@ -20,6 +20,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/playIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_play"
+            android:visibility="gone"
+            android:contentDescription="@string/play_video"
+            app:layout_constraintBottom_toBottomOf="@id/imageView"
+            app:layout_constraintEnd_toEndOf="@id/imageView"
+            app:layout_constraintStart_toStartOf="@id/imageView"
+            app:layout_constraintTop_toTopOf="@id/imageView" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:checked="false"
+            app:buttonTint="@color/white"
+            app:buttonIconTint="?attr/colorPrimary"
+            app:layout_constraintEnd_toEndOf="@id/imageView"
+            app:layout_constraintTop_toTopOf="@id/imageView" />
+
         <LinearLayout
             android:id="@+id/info_container"
             android:layout_width="match_parent"
@@ -31,30 +54,26 @@
             app:layout_constraintEnd_toEndOf="@id/imageView"
             app:layout_constraintStart_toStartOf="@id/imageView">
 
-
-            <TextView
-                android:id="@+id/tv_name"
-                style="@style/NotoBold.body4"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvName"
+                style="@style/NotoBold.body3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="File Name"
-                android:textColor="#FFFFFF" />
+                android:textColor="@color/white" />
 
-
-            <TextView
-                android:id="@+id/tv_size"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvSize"
                 style="@style/NotoRegular.body5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:gravity="end"
                 android:maxLines="1"
                 android:text="Size"
-                android:textColor="#FFFFFF" />
+                android:textColor="@color/white" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

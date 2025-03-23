@@ -1,10 +1,9 @@
 package com.anhq.mediakeep.data.model;
 
+import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import com.anhq.mediakeep.utils.help.StorageUtils;
 
 public class MediaItem implements Parcelable {
     private Uri uri;
@@ -20,8 +19,7 @@ public class MediaItem implements Parcelable {
     }
 
     protected MediaItem(Parcel in) {
-        String uriString = in.readString();
-        uri = uriString != null ? Uri.parse(uriString) : null;
+        uri = in.readParcelable(Uri.class.getClassLoader());
         name = in.readString();
         size = in.readLong();
         dateModified = in.readLong();
@@ -39,25 +37,16 @@ public class MediaItem implements Parcelable {
         }
     };
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(uri != null ? uri.toString() : null);
-        dest.writeString(name);
-        dest.writeLong(size);
-        dest.writeLong(dateModified);
-    }
-
     public Uri getUri() {
         return uri;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public long getSize() {
@@ -68,7 +57,24 @@ public class MediaItem implements Parcelable {
         return dateModified;
     }
 
+    @SuppressLint("DefaultLocale")
     public String getFormattedSize() {
-        return StorageUtils.convertBytes(size);
+        if (size < 1024) return size + " B";
+        else if (size < 1024 * 1024) return String.format("%.1f KB", size / 1024.0);
+        else if (size < 1024 * 1024 * 1024) return String.format("%.1f MB", size / (1024.0 * 1024.0));
+        else return String.format("%.1f GB", size / (1024.0 * 1024.0 * 1024.0));
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(uri, flags);
+        dest.writeString(name);
+        dest.writeLong(size);
+        dest.writeLong(dateModified);
     }
 }
