@@ -33,7 +33,6 @@
             <TextView
                 android:id="@+id/textViewFileName"
                 style="@style/NotoBold.body2"
-                android:layout_marginVertical="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="filename" />
@@ -42,7 +41,6 @@
                 android:id="@+id/textViewDateModified"
                 style="@style/NotoRegular.body2"
                 android:layout_width="match_parent"
-                android:layout_marginVertical="10dp"
                 android:layout_height="wrap_content"
                 android:text="date" />
 
@@ -50,13 +48,13 @@
                 android:id="@+id/textViewPath"
                 style="@style/NotoRegular.body2"
                 android:layout_width="match_parent"
-                android:layout_marginVertical="10dp"
                 android:layout_height="wrap_content"
                 android:text="path" />
 
             <Button
                 android:id="@+id/buttonUnsync"
                 style="@style/NotoBold.body2"
+                android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
