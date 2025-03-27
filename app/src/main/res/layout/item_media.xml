@@ -56,7 +56,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvName"
-                style="@style/NotoBold.body3"
+                style="@style/NotoBold.body5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

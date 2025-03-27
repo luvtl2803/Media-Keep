@@ -8,4 +8,9 @@
         <item>Size (Smallest)</item>
         <item>Size (Largest)</item>
     </string-array>
+
+    <string-array name="media_types">
+        <item>image</item>
+        <item>video</item>
+    </string-array>
 </resources>

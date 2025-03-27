@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.core.os.ParcelCompat;
+
 public class MediaItem implements Parcelable {
     private Uri uri;
     private String name;
@@ -19,7 +21,7 @@ public class MediaItem implements Parcelable {
     }
 
     protected MediaItem(Parcel in) {
-        uri = in.readParcelable(Uri.class.getClassLoader());
+        uri = ParcelCompat.readParcelable(in, Uri.class.getClassLoader(), Uri.class);
         name = in.readString();
         size = in.readLong();
         dateModified = in.readLong();

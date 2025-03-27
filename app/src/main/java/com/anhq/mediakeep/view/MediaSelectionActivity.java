@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -21,6 +22,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.anhq.mediakeep.R;
 import com.anhq.mediakeep.adapter.MediaAdapter;
 import com.anhq.mediakeep.data.model.MediaItem;
+import com.anhq.mediakeep.data.repository.MediaRepository;
+import com.anhq.mediakeep.data.repository.MediaRepositoryImpl;
 import com.anhq.mediakeep.databinding.ActivityMediaSelectionBinding;
 import com.anhq.mediakeep.viewmodel.MediaViewModel;
 
@@ -33,8 +36,9 @@ public class MediaSelectionActivity extends AppCompatActivity {
     private MediaAdapter mediaAdapter;
     private MediaViewModel viewModel;
     private String mediaType;
-    private int currentSortMode = 0; // 0: Date Desc, 1: Date Asc, 2: Size Asc, 3: Size Desc
+    private int currentSortMode = 0;
     private boolean isSelectionMode = false;
+    private MediaRepository mediaRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public class MediaSelectionActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mediaType = getIntent().getStringExtra("media_type");
+        mediaRepository = new MediaRepositoryImpl(getContentResolver(), this, mediaType);
 
         viewModel = new ViewModelProvider(this).get(MediaViewModel.class);
 
@@ -52,7 +57,7 @@ public class MediaSelectionActivity extends AppCompatActivity {
             mediaAdapter.updateMediaList(sortMediaList(mediaList));
         });
 
-        viewModel.loadMedia(mediaType);
+        viewModel.loadMediaByType(mediaType);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.sort_options, android.R.layout.simple_dropdown_item_1line);
@@ -63,12 +68,13 @@ public class MediaSelectionActivity extends AppCompatActivity {
 
         binding.spinnerSort.setOnItemClickListener((parent, view, position, id) -> {
             currentSortMode = position;
-            viewModel.loadMedia(mediaType);
+            viewModel.loadMediaByType(mediaType);
         });
 
         mediaAdapter.setOnSelectionChangeListener(selectedItems -> {
             binding.bottomToolbar.setVisibility(selectedItems.isEmpty() ? View.GONE : View.VISIBLE);
             binding.btnRename.setVisibility(selectedItems.size() == 1 ? View.VISIBLE : View.GONE);
+            binding.btnSync.setVisibility(selectedItems.isEmpty() ? View.GONE : View.VISIBLE);
         });
 
         handleButton();
@@ -117,7 +123,7 @@ public class MediaSelectionActivity extends AppCompatActivity {
                             }
                         }
                         mediaAdapter.clearSelections();
-                        viewModel.loadMedia(mediaType);
+                        viewModel.loadMediaByType(mediaType);
                         Toast.makeText(this, "Deleted " + selectedItems.size() + " items", Toast.LENGTH_SHORT).show();
                     })
                     .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
@@ -143,6 +149,31 @@ public class MediaSelectionActivity extends AppCompatActivity {
                 MediaItem item = selectedItems.get(0);
                 showRenameDialog(item);
             }
+        });
+
+        binding.btnSync.setOnClickListener(v -> {
+            List<MediaItem> selectedItems = mediaAdapter.getSelectedItems();
+            if (selectedItems.isEmpty()) {
+                Toast.makeText(this, "No items selected to sync", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            mediaRepository.backupMediaItems(selectedItems, new MediaRepository.OnSyncCallback() {
+                @Override
+                public void onSuccess(int syncedCount) {
+                    runOnUiThread(() -> {
+                        Toast.makeText(MediaSelectionActivity.this, "Synced " + syncedCount + " items successfully", Toast.LENGTH_SHORT).show();
+                        mediaAdapter.clearSelections();
+                    });
+                }
+
+                @Override
+                public void onFailure(String errorMessage) {
+                    runOnUiThread(() -> {
+                        Toast.makeText(MediaSelectionActivity.this, "Sync failed: " + errorMessage, Toast.LENGTH_SHORT).show();
+                        Log.d("Api",errorMessage);
+                    });
+                }
+            });
         });
     }
 
@@ -217,7 +248,7 @@ public class MediaSelectionActivity extends AppCompatActivity {
             e.printStackTrace();
             Toast.makeText(this, "Error renaming: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         } finally {
-            viewModel.loadMedia(mediaType);
+            viewModel.loadMediaByType(mediaType);
         }
     }
 

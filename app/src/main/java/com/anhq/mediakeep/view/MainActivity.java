@@ -9,9 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.anhq.mediakeep.databinding.ActivityMainBinding;
+import com.anhq.mediakeep.utils.help.ConvertBytesToBigger;
 import com.anhq.mediakeep.utils.help.PermissionHelper;
 import com.anhq.mediakeep.utils.help.StorageManager;
-import com.anhq.mediakeep.utils.help.ConvertBytesToBigger;
 
 public class MainActivity extends AppCompatActivity implements PermissionHelper.PermissionCallback {
     private ActivityMainBinding binding;
@@ -50,11 +50,23 @@ public class MainActivity extends AppCompatActivity implements PermissionHelper.
     private void setupButtonListeners() {
         binding.btnSelectImage.setOnClickListener(v -> startMediaSelectionActivity("image"));
         binding.btnSelectVideo.setOnClickListener(v -> startMediaSelectionActivity("video"));
+        binding.btnFindDuplicates.setOnClickListener(v -> startFindDuplicatesActivity());
+        binding.btnBackup.setOnClickListener(v -> startBackupActivity());
+    }
+
+    private void startBackupActivity() {
+        Intent intent = new Intent(this, BackupMediaActivity.class);
+        startActivity(intent);
     }
 
     private void startMediaSelectionActivity(String mediaType) {
         Intent intent = new Intent(this, MediaSelectionActivity.class);
         intent.putExtra("media_type", mediaType);
+        startActivity(intent);
+    }
+
+    private void startFindDuplicatesActivity() {
+        Intent intent = new Intent(this, DuplicateFinderActivity.class);
         startActivity(intent);
     }
 
