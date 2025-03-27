@@ -1,24 +1,16 @@
 # Media-Keep
-MediaKeep - Local Media Management App
+MediaKeep - Media Management App
 
 Description:
-MediaKeep is an Android application designed to scan and manage local media files on a device. Built using the MVVM architecture, it provides an efficient way to browse, organize, and access media content. The app enables users to view images, videos, and audio files while offering features such as sorting, filtering, and file size display.
-
-Key Features:
-
--  Scan and list local media files (images, videos, audio).
-
--  Full-screen image viewer with share, set as background, media details (name, size, date modified) feature.
-
--  Efficient filter options.
-
--  Built with MVVM architecture for maintainability and scalability.
+Android application for managing and organizing local media files (images and videos) stored on the device. The app enables users to easily backup, sort, and view their media files, offering features such as file size display, full-screen viewing, and media selection. 
 
 Tech Stack:
 
 -  Language: Java
 
 -  Architecture: MVVM
+  
+-  Handling API: Retrofit
 
 -  Storage Handling: Scoped Storage API
 
